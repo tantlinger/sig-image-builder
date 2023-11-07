@@ -20,7 +20,7 @@ Installation Notes:
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <DriverPaths>
                 <PathAndCredentials wcm:action="add" wcm:keyValue="A">
-                    <Path>a:\</Path>
+                    <Path>e:\</Path>
                 </PathAndCredentials>
             </DriverPaths>
         </component>
@@ -79,10 +79,10 @@ Installation Notes:
                 <AcceptEula>true</AcceptEula>
                 <FullName>Administrator</FullName>
                 <Organization>Organization</Organization>
-                <ProductKey>
+                <!-- <ProductKey>
                     <Key>VDYBN-27WPP-V4HQT-9VMD4-VMK7H</Key>
                     <WillShowUI>OnError</WillShowUI>
-                </ProductKey>
+                </ProductKey> -->
             </UserData>
             <EnableFirewall>true</EnableFirewall>
         </component>
@@ -148,7 +148,7 @@ Installation Notes:
             xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <ComputerName></ComputerName>
-            <ProductKey>VDYBN-27WPP-V4HQT-9VMD4-VMK7H</ProductKey>
+            <!-- <ProductKey>VDYBN-27WPP-V4HQT-9VMD4-VMK7H</ProductKey> -->
         </component>
     </settings>
     <settings pass="oobeSystem">
