@@ -17,7 +17,6 @@
       "cpus": "{{user `cpus`}}",
       "disk_compression": "{{ user `disk_compression`}}",
       "disk_discard": "{{user `disk_discard`}}",
-      "disk_interface": "virtio-scsi",
       "disk_size": "{{user `disk_size`}}",
       "firmware": "{{user `firmware`}}",
       "format": "{{user `format`}}",
@@ -26,20 +25,12 @@
       "iso_checksum": "{{user `iso_checksum`}}",
       "iso_url": "{{user `iso_url`}}",
       "memory": "{{user `memory`}}",
-      "net_device": "virtio-net",
       "output_directory": "{{user `output_directory`}}",
       "qemu_binary": "{{user `qemu_binary`}}",
       "shutdown_command": "powershell A:/sysprep.ps1",
-      "ssh_password": "{{user `ssh_password`}}",
-      "ssh_timeout": "2h",
-      "ssh_username": "{{user `ssh_username`}}",
       "type": "qemu",
       "vm_name": "{{user `vm_name`}}",
       "communicator": "winrm",
-      "cd_files": [
-        "./packer/qemu/windows/virtio-drivers/viostor/{{user `build_name`}}/amd64/*",
-        "./packer/qemu/windows/virtio-drivers/NetKVM/{{user `build_name`}}/amd64/*"
-      ],
       "floppy_files": [
         "./packer/qemu/windows/{{user `build_name`}}/autounattend.xml",
         "./packer/qemu/windows/disable-network-discovery.cmd",
@@ -47,65 +38,17 @@
         "./packer/qemu/windows/enable-winrm.ps1",
         "./packer/qemu/windows/sysprep.ps1"
       ],
+      "cd_files": [
+        "./packer/qemu/windows/virtio-drivers/viostor/{{user `build_name`}}/amd64/*",
+        "./packer/qemu/windows/virtio-drivers/NetKVM/{{user `build_name`}}/amd64/*"
+      ],
       "winrm_insecure": true,
       "winrm_password": "S3cr3t0!",
       "winrm_timeout": "4h",
       "winrm_username": "Administrator"
     }
   ],
-  "post-processors": [
-    {
-      "custom_data": {
-        "build_date": "{{isotime}}",
-        "build_name": "{{user `build_name`}}",
-        "build_timestamp": "{{user `build_timestamp`}}",
-        "containerd_version": "{{user `containerd_version`}}",
-        "debug_tools": "{{user `debug_tools`}}",
-        "disable_hypervisor": "{{user `disable_hypervisor`}}",
-        "disk_size": "{{user `disk_size`}}",
-        "distro_arch": "{{user `distro_arch` }}",
-        "distro_name": "{{user `distro_name` }}",
-        "distro_version": "{{user `distro_version` }}",
-        "firmware": "{{user `firmware`}}",
-        "guest_os_type": "{{user `guest_os_type`}}",
-        "ib_version": "{{user `ib_version`}}",
-        "kubernetes_cni_semver": "{{user `kubernetes_cni_semver`}}",
-        "kubernetes_semver": "{{user `kubernetes_semver`}}",
-        "kubernetes_source_type": "{{user `kubernetes_source_type`}}",
-        "kubernetes_typed_version": "{{user `kubernetes_typed_version`}}",
-        "os_name": "{{user `os_display_name`}}",
-        "vsphere_guest_os_type": "{{user `vsphere_guest_os_type`}}"
-      },
-      "except": [
-        "file"
-      ],
-      "output": "{{user `output_dir`}}/packer-manifest.json",
-      "strip_path": true,
-      "type": "manifest"
-    },
-    {
-      "except": [
-        "file"
-      ],
-      "inline": [
-        "cd {{user `output_dir`}}",
-        "../../hack/image-build-ova.py --vmx {{user `vmx_version`}} --eula ../../hack/ovf_eula.txt --ovf_template ../../hack/ovf_template.xml --vmdk_file {{user `build_version`}}-disk-0.vmdk"
-      ],
-      "name": "vsphere",
-      "type": "shell-local"
-    },
-    {
-      "except": [
-        "file"
-      ],
-      "inline": [
-        "./hack/image-build-ova.py --stream_vmdk --vmx {{user `vmx_version`}} --eula ./hack/ovf_eula.txt --ovf_template ./hack/ovf_template.xml {{user `output_dir`}}",
-        "./hack/image-post-create-config.sh {{user `output_dir`}}"
-      ],
-      "name": "local",
-      "type": "shell-local"
-    }
-  ],
+
   "provisioners": [
     {
       "except": "file",
@@ -173,7 +116,7 @@
     }
   ],
   "variables": {
-    "additional_debug_files": null,
+    "accelerator": "kvm",
     "ansible_common_vars": "",
     "ansible_extra_vars": "",
     "ansible_user_vars": "",
@@ -189,15 +132,18 @@
     "containerd_sha256": null,
     "containerd_url": "",
     "containerd_version": null,
-    "disable_hypervisor": null,
-    "disk_size": "81920",
-    "http_port_max": "",
-    "http_port_min": "",
+    "cpus": "2",
+    "disk_compression": "false",
+    "disk_discard": "unmap",
+    "disk_size": "31920",
+    "format": "qcow2",
+    "headless": "true",
     "ib_version": "{{env `IB_VERSION`}}",
     "kubernetes_base_url": "https://kubernetesreleases.blob.core.windows.net/kubernetes/{{user `kubernetes_semver`}}/binaries/node/windows/{{user `kubernetes_goarch`}}",
     "kubernetes_http_package_url": "",
     "kubernetes_typed_version": "kube-{{user `kubernetes_semver`}}",
     "manifest_output": "manifest.json",
+    "memory": "4096",
     "netbios_host_name_compatibility": null,
     "nssm_url": null,
     "output_dir": "./output/{{user `build_version`}}",
