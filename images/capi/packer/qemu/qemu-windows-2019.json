@@ -1,0 +1,14 @@
+{
+  "build_name": "windows-2019",
+  "disk_controller_type": "pvscsi",
+  "distro_arch": "amd64",
+  "distro_name": "windows",
+  "distro_version": "2019",
+  "guest_os_type": "Windows2019Server-64",
+  "iso_checksum": "none",
+  "local_guest_os_type": "windows9srv-64",
+  "os_display_name": "Windows Server 2019",
+  "iso_checksum": "c2592569df937aff1c21dafd3d4e9b40",
+  "iso_url": "https://tantlinger-tmp.s3.eu-west-1.amazonaws.com/win-2019-server-eval-01112023.iso",
+  "vsphere_guest_os_type": "windows9Server64Guest"
+}
