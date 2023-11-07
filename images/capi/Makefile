@@ -115,6 +115,7 @@ deps-openstack: deps-common
 .PHONY: deps-qemu
 deps-qemu: ## Installs/checks dependencies for QEMU builds
 deps-qemu: deps-common
+	hack/ensure-ansible-windows.sh
 	hack/ensure-goss.sh
 	$(PACKER) init packer/config.pkr.hcl
 
@@ -530,7 +531,7 @@ $(OPENSTACK_VALIDATE_TARGETS): deps-openstack
 
 .PHONY: $(QEMU_BUILD_TARGETS)
 $(QEMU_BUILD_TARGETS): deps-qemu
-	$(PACKER) build $(PACKER_NODE_FLAGS) -var-file="$(abspath packer/qemu/$(subst build-,,$@).json)" $(ABSOLUTE_PACKER_VAR_FILES) packer/qemu/packer.json
+	$(PACKER) build $(if $(findstring windows,$@),$(PACKER_WINDOWS_NODE_FLAGS),$(PACKER_NODE_FLAGS)) -var-file="$(abspath packer/qemu/$(subst build-,,$@).json)" $(ABSOLUTE_PACKER_VAR_FILES) packer/qemu/packer$(if $(findstring windows,$@),-windows).json
 
 .PHONY: $(QEMU_VALIDATE_TARGETS)
 $(QEMU_VALIDATE_TARGETS): deps-qemu
@@ -538,7 +539,8 @@ $(QEMU_VALIDATE_TARGETS): deps-qemu
 
 .PHONY: $(QEMU_KUBEVIRT_BUILD_TARGETS)
 $(QEMU_KUBEVIRT_BUILD_TARGETS): deps-qemu
-	$(PACKER) build $(PACKER_NODE_FLAGS) -var-file="$(abspath packer/qemu/$(subst build-kubevirt-,,$@).json)" --var 'kubevirt=true' $(ABSOLUTE_PACKER_VAR_FILES) packer/qemu/packer.json
+	# $(PACKER) build $(PACKER_NODE_FLAGS) -var-file="$(abspath packer/qemu/$(subst build-kubevirt-,,$@).json)" --var 'kubevirt=true' $(ABSOLUTE_PACKER_VAR_FILES) packer/qemu/packer.json
+	$(PACKER) build $(if $(findstring windows,$@),$(PACKER_WINDOWS_NODE_FLAGS),$(PACKER_NODE_FLAGS)) -var-file="$(abspath packer/qemu/$(subst build-kubevirt-,,$@).json)" --var 'kubevirt=true' $(ABSOLUTE_PACKER_VAR_FILES) packer/qemu/packer$(if $(findstring windows,$@),-windows).json
 
 .PHONY: $(QEMU_KUBEVIRT_VALIDATE_TARGETS)
 $(QEMU_KUBEVIRT_VALIDATE_TARGETS): deps-qemu

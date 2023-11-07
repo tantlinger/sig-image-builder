@@ -36,8 +36,9 @@
       "type": "qemu",
       "vm_name": "{{user `vm_name`}}",
       "communicator": "winrm",
-      "floppy_dirs": [
-        "./packer/qemu/windows/virtio-drivers"
+      "cd_files": [
+        "./packer/qemu/windows/virtio-drivers/viostor/{{user `build_name`}}/amd64/*",
+        "./packer/qemu/windows/virtio-drivers/NetKVM/{{user `build_name`}}/amd64/*"
       ],
       "floppy_files": [
         "./packer/qemu/windows/{{user `build_name`}}/autounattend.xml",
@@ -176,6 +177,7 @@
     "ansible_common_vars": "",
     "ansible_extra_vars": "",
     "ansible_user_vars": "",
+    "boot_wait": "10s",
     "build_name": null,
     "build_timestamp": "{{timestamp}}",
     "build_version": "{{user `build_name`}}-kube-{{user `kubernetes_semver`}}",
