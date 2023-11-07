@@ -770,7 +770,7 @@ build-qemu-centos-7: ## Builds CentOS 7 QEMU image
 build-qemu-rhel-8: ## Builds RHEL 8 QEMU image
 build-qemu-rockylinux-8: ## Builds Rocky 8 QEMU image
 build-qemu-rockylinux-9: ## Builds Rocky 9 QEMU image
-build-qemu-windows-2019
+build-qemu-windows-2019: ## Builds Windows 2019 QEMU image
 build-qemu-all: $(QEMU_BUILD_TARGETS) ## Builds all Qemu images
 
 build-raw-flatcar: ## Builds Flatcar RAW image
