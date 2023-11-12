@@ -54,6 +54,8 @@
       "except": "file",
       "extra_arguments": [
         "-e",
+        "ansible_winrm_scheme=http",
+        "-e",
         "ansible_winrm_server_cert_validation=ignore",
         "--extra-vars",
         "{{user `ansible_common_vars`}}",
