@@ -120,7 +120,7 @@
   "variables": {
     "accelerator": "kvm",
     "ansible_common_vars": "",
-    "ansible_extra_vars": "",
+    "ansible_extra_vars": "disable_hypervisor=true runtime=containerd",
     "ansible_user_vars": "",
     "boot_wait": "10s",
     "build_name": null,
