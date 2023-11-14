@@ -32,7 +32,7 @@
       "vm_name": "{{user `vm_name`}}",
       "communicator": "winrm",
       "floppy_files": [
-        "./packer/qemu/windows/{{user `build_name`}}/autounattend.xml",
+        "./packer/qemu/windows/{{user `distro_name`}}-{{user `distro_version`}}/autounattend.xml",
         "./packer/qemu/windows/disable-network-discovery.cmd",
         "./packer/qemu/windows/disable-winrm.ps1",
         "./packer/qemu/windows/enable-winrm.ps1",
