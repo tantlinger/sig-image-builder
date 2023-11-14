@@ -39,8 +39,8 @@
         "./packer/qemu/windows/sysprep.ps1"
       ],
       "cd_files": [
-        "./packer/qemu/windows/virtio-drivers/viostor/{{user `build_name`}}/amd64/*",
-        "./packer/qemu/windows/virtio-drivers/NetKVM/{{user `build_name`}}/amd64/*"
+        "./packer/qemu/windows/virtio-drivers/viostor/{{user `distro_name`}}-{{user `distro_version`}}/amd64/*",
+        "./packer/qemu/windows/virtio-drivers/NetKVM/{{user `distro_name`}}-{{user `distro_version`}}/amd64/*"
       ],
       "winrm_insecure": true,
       "winrm_password": "S3cr3t0!",
@@ -125,7 +125,7 @@
     "boot_wait": "10s",
     "build_name": null,
     "build_timestamp": "{{timestamp}}",
-    "build_version": "{{user `build_name`}}-kube-{{user `kubernetes_semver`}}",
+    "build_version": "{{user `distro_name`}}-{{user `distro_version`}}-kube-{{user `kubernetes_semver`}}",
     "cloudbase_init_url": "https://github.com/cloudbase/cloudbase-init/releases/download/{{user `cloudbase_init_version`}}/CloudbaseInitSetup_{{user `cloudbase_init_version` | replace_all `.` `_` }}_x64.msi",
     "cloudbase_metadata_services": "cloudbaseinit.metadata.services.vmwareguestinfoservice.VMwareGuestInfoService",
     "cloudbase_metadata_services_unattend": "cloudbaseinit.metadata.services.vmwareguestinfoservice.VMwareGuestInfoService",
