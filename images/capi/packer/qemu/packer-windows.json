@@ -166,12 +166,13 @@
     "memory": "4096",
     "netbios_host_name_compatibility": null,
     "nssm_url": null,
-    "output_dir": "./output/{{user `build_version`}}",
+    "output_directory": "./output/{{user `build_name`}}-kube-{{user `kubernetes_semver`}}",
     "prepull": null,
     "unattend_timezone": "W. Europe Standard Time",
     "windows_service_manager": null,
     "windows_updates_categories": null,
     "windows_updates_kbs": null,
-    "wins_url": "https://github.com/rancher/wins/releases/download/v{{user `wins_version`}}/wins.exe"
+    "wins_url": "https://github.com/rancher/wins/releases/download/v{{user `wins_version`}}/wins.exe",
+    "vm_name": "{{user `build_name`}}-kube-{{user `kubernetes_semver`}}"
   }
 }
