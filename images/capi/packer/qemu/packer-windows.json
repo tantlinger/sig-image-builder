@@ -64,7 +64,7 @@
       ],
       "name": "kubevirt",
       "type": "shell-local",
-      "only": "qemu"
+      "only": [ "qemu" ]
     }
   ],
   "provisioners": [
