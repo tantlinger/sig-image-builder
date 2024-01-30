@@ -1,6 +1,11 @@
 {
   "builders": [
     {
+      "content": "{\n \"unattend_timezone\" : \"{{user `unattend_timezone`}}\"\n}",
+      "target": "./packer_cache/unattend.json",
+      "type": "file"
+    },
+    {
       "accelerator": "{{user `accelerator`}}",
       "boot_command": [
         "{{user `boot_command_prefix`}}",
@@ -58,7 +63,8 @@
         "fi"
       ],
       "name": "kubevirt",
-      "type": "shell-local"
+      "type": "shell-local",
+      "only": "qemu"
     }
   ],
   "provisioners": [
