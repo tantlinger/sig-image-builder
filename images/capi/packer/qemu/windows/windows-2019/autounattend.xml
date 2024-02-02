@@ -235,7 +235,7 @@ Installation Notes:
             <RegisteredOrganization>Organization</RegisteredOrganization>
             <RegisteredOwner>Owner</RegisteredOwner>
             <DisableAutoDaylightTimeSet>false</DisableAutoDaylightTimeSet>
-            <TimeZone>W. Europe Standard Time</TimeZone>
+            <TimeZone>UTC</TimeZone>
             <UserAccounts>
                 <AdministratorPassword>
                     <Value>S3cr3t0!</Value>

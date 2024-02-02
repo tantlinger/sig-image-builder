@@ -169,7 +169,7 @@
     "nssm_url": null,
     "output_directory": "./output/{{user `build_name`}}-kube-{{user `kubernetes_semver`}}",
     "prepull": null,
-    "unattend_timezone": "W. Europe Standard Time",
+    "unattend_timezone": "UTC",
     "windows_service_manager": null,
     "windows_updates_categories": null,
     "windows_updates_kbs": null,
