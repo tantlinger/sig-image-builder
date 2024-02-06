@@ -4,7 +4,7 @@
   "disable_hypervisor": "false",
   "http_proxy": "",
   "https_proxy": "",
-  "netbios_host_name_compatibility": "true",
+  "netbios_host_name_compatibility": "false",
   "no_proxy": "",
   "nssm_url": "https://upstreamartifacts.azureedge.net/nssm/nssm.exe",
   "prepull": "true",
