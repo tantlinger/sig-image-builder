@@ -156,7 +156,7 @@
     "cpus": "2",
     "disk_compression": "false",
     "disk_discard": "unmap",
-    "disk_size": "31920",
+    "disk_size": "21920",
     "format": "qcow2",
     "headless": "true",
     "ib_version": "{{env `IB_VERSION`}}",
