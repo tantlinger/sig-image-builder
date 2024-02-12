@@ -152,7 +152,7 @@
     "cloudbase_plugins_unattend": "cloudbaseinit.plugins.common.mtu.MTUPlugin",
     "containerd_sha256": null,
     "containerd_url": "",
-    "containerd_version": "v1.6.28",
+    "containerd_version": "null",
     "cpus": "2",
     "disk_compression": "false",
     "disk_discard": "unmap",
